@@ -1,5 +1,7 @@
 # Placement-Portal
 
+### We will be using yarn as the package manager for this project.
+
 ## Branches
 
 develop - main development branch
@@ -10,20 +12,21 @@ PLP-X - feature branch where X is the corresponding ticket number
 
 ## Project Setup
 
-Go to client:
-
-```bash
-yarn # to install dependencies
-yarn dev # start the server
-```
+### add the environment variables using the .env.example file in both client and server
 
 Go to server:
 
 ```bash
 yarn # to install dependencies
-npx prisma generate # updating prisma types in client
-npx prisma migrate dev # updating prisma types in the database (RUN ONLY IF schema changes were made)
 yarn dev # start the server in dev mode
+```
+
+Go to client:
+
+```bash
+yarn # to install dependencies
+yarn codegen #to update type definitions
+yarn dev # start the server
 ```
 
 ## Update your feature branch with remote changes [IMPORTANT]
@@ -59,7 +62,9 @@ git push --force # always do a force push after rebase
 
 ## Generating types in server
 
-If server is already running, save the codegen.yml file to regenerate types
+If server is already running in dev mode, save the codegen.yml file to regenerate types.
+
+Alternatively, you can run `yarn codegen` to generate types
 
 </br>
 
@@ -78,10 +83,16 @@ Checking the DB:
 npx prisma studio
 ```
 
-Regenerating DB:
+Generate prisma client
 
 ```bash
-npx prisma migrate
+npx prisma generate
+```
+
+Migrate DB changes:
+
+```bash
+npx prisma migrate dev
 ```
 
 For more info visit package.json in server & client.
