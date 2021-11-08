@@ -1,0 +1,10 @@
+overwrite: true
+schema: "./src/graphql/*.ts"
+documents: null
+generates:
+  src/types/graphql.ts:
+    plugins:
+      - "typescript"
+      - "typescript-resolvers"
+    config:
+      enumsAsTypes: true

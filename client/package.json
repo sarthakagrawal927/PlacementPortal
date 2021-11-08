@@ -1,0 +1,27 @@
+{
+	"name": "client",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"codegen": "graphql-codegen --require dotenv/config --config codegen.yml dotenv_config_path=.env.development.local",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"@apollo/client": "^3.4.16",
+		"@mui/material": "^5.0.6",
+		"graphql": "^16.0.1",
+		"next": "12.0.3",
+		"react": "17.0.2",
+		"react-dom": "17.0.2"
+	},
+	"devDependencies": {
+		"@graphql-codegen/cli": "^2.2.2",
+		"@types/react": "17.0.34",
+		"eslint": "7.32.0",
+		"eslint-config-next": "12.0.3",
+		"typescript": "4.4.4"
+	}
+}

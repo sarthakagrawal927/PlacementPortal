@@ -1,0 +1,37 @@
+{
+	"name": "server",
+	"version": "1.0.0",
+	"description": "MIT Placement Portal Server",
+	"main": "server.js",
+	"author": "Karan Hejmadi",
+	"license": "MIT",
+	"dependencies": {
+		"@prisma/client": "^3.4.1",
+		"@types/jsonwebtoken": "^8.5.5",
+		"apollo-server": "^3.5.0",
+		"dotenv": "^10.0.0",
+		"graphql": "^16.0.1",
+		"jsonwebtoken": "^8.5.1"
+	},
+	"scripts": {
+		"codegen": "graphql-codegen --config codegen.yml",
+		"dev": "concurrently \"yarn watch\" \"nodemon dist/server.js\" \"yarn codegen --watch\"",
+		"watch": "tsc -w",
+		"build": "yarn codegen && tsc",
+		"start": "node dist/server.js",
+		"postinstall": "prisma generate",
+		"ts-node": "ts-node --compiler-options {\\\"module\\\":\\\"commonjs\\\"}"
+	},
+	"devDependencies": {
+		"@graphql-codegen/cli": "^2.2.2",
+		"@graphql-codegen/introspection": "^2.1.0",
+		"@graphql-codegen/typescript": "^2.3.1",
+		"@graphql-codegen/typescript-resolvers": "^2.4.0",
+		"@types/node": "^16.11.6",
+		"concurrently": "^6.3.0",
+		"prettier": "^2.4.1",
+		"prisma": "^3.4.1",
+		"ts-node": "^10.4.0",
+		"typescript": "^4.4.4"
+	}
+}
