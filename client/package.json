@@ -12,12 +12,18 @@
 	"dependencies": {
 		"@apollo/client": "^3.4.16",
 		"@hookform/resolvers": "^2.8.3",
-		"@mui/material": "^5.0.6",
+		"@mui/icons-material": "^5.1.1",
+		"@mui/lab": "^5.0.0-alpha.55",
+		"@mui/material": "^5.1.0",
+		"@mui/styled-engine": "npm:@mui/styled-engine-sc@latest",
+		"@mui/styled-engine-sc": "^5.1.0",
 		"@types/styled-components": "^5.1.15",
 		"graphql": "^16.0.1",
+		"html5-file-selector": "^2.1.0",
 		"next": "12.0.3",
 		"react": "17.0.2",
 		"react-dom": "17.0.2",
+		"react-dropzone-uploader": "^2.11.0",
 		"react-hook-form": "^7.19.5",
 		"styled-components": "^5.3.3"
 	},
@@ -30,5 +36,8 @@
 		"eslint": "7.32.0",
 		"eslint-config-next": "12.0.3",
 		"typescript": "4.4.4"
+	},
+	"resolutions": {
+		"@mui/styled-engine": "npm:@mui/styled-engine-sc@latest"
 	}
 }

@@ -22,7 +22,7 @@ export const uiColor = {
 	darkRed: "#BC002D",
 	lightestGray: "#F1F6FA", // dark row color
 	lightGray: "#EBEDF0", // section border
-	gray: "#C4C4C4", // input border
+	gray: "#A2AEB7", // input border
 	darkGray: "#6A7782", // menu items
 	darkestGray: "#3B4854", // form labels, section heading
 };
