@@ -10,7 +10,7 @@ interface ButtonProps extends MaterialButtonProps {
 const Button = ({ text, variant, onClick, rounded, ...props }: ButtonProps) => {
 	const [outlined, setOutlined] = useState(variant === "outlined");
 	useEffect(() => {
-		console.log({ outlined });
+		// console.log({ outlined });
 	}, [outlined]);
 	return (
 		<MaterialButton
