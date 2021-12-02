@@ -1,43 +1,45 @@
-import * as React from "react";
-import { InputProps as MaterialInputProps, Theme } from "@mui/material";
-import InputUnstyled, { InputUnstyledProps } from "@mui/core/InputUnstyled";
-import { styled } from "@mui/system";
+import React from "react";
+import { boxSizing, styled } from "@mui/system";
+import TextField, { TextFieldProps } from "@mui/material/TextField";
+import { Theme } from "@mui/material";
 
-const StyledInputElement = styled("input")<{ theme: Theme }>(
-	({ theme }) => `
-	width: 100%;
-	height: 100%;
-	font-size: 1rem;
-	border: 1px solid ${theme.uiColor.gray};
-	border-radius: 10px;
-	padding: 6px 10px;
-	color: ${theme.uiColor.indigo};
+const MUITextField = styled(TextField)<{ theme: Theme }>(({ theme }) => ({
+	"& label.Mui-focused": {
+		color: theme.uiColor.indigo,
+	},
+	"& .MuiInput-underline:after": {
+		borderBottomColor: theme.uiColor.indigo,
+	},
+	"& .MuiOutlinedInput-root": {
+		"& fieldset": {
+			borderColor: theme.uiColor.gray,
+		},
+		"&:hover fieldset": {
+			borderColor: theme.uiColor.indigo,
+		},
+		"&.Mui-focused fieldset": {
+			borderColor: theme.uiColor.indigo,
+		},
+	},
+	"& .MuiInputBase-multiline": {
+		height: "100%",
+		padding: 0,
+	},
+	"& .MuiInputBase-inputMultiline": {
+		height: "100% !important",
+		padding: "1em",
+		boxSizing: "border-box",
+		overflow: "auto !important",
+	},
+}));
 
-	&:hover {s
-		border-color: ${theme.uiColor.indigo};
-	}
-
-	&:focus {
-		outline: none;
-		border: 1px solid ${theme.uiColor.indigo};
-		transition: border 300ms ease-out;
-	}
-`
-);
-
-const CustomInput = React.forwardRef(function CustomInput(
-	props: InputUnstyledProps,
-	ref: React.ForwardedRef<HTMLDivElement>
-) {
-	return <InputUnstyled components={{ Input: StyledInputElement }} {...props} ref={ref} />;
-});
-
-interface InputProps extends MaterialInputProps {
-	height?: string;
+type InputProps = TextFieldProps & {
 	width?: string;
-}
-
-const Input = ({ placeholder, height, width }: InputProps) => {
-	return <CustomInput aria-label="input field" placeholder={placeholder} style={{ width, height }} />;
+	height?: string;
 };
+
+const Input = ({ width, height, ref, ...props }: InputProps) => {
+	return <MUITextField sx={{ width, height }} {...props} />;
+};
+
 export default Input;

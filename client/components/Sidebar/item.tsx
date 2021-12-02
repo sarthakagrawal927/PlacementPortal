@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useTheme } from "@mui/material";
 import MaterialListItem, { ListItemProps } from "@mui/material/ListItem";
-import Link from "next/Link";
+import Link from "next/link";
 
 const SidebarItem = ({ path, ...props }: SidebarItemProps) => {
 	const theme = useTheme();

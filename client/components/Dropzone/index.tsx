@@ -4,6 +4,7 @@ import ReactDropzone, {
 	IPreviewProps,
 	StatusValue,
 	IInputProps,
+	IDropzoneProps,
 } from "react-dropzone-uploader";
 import { getDroppedOrSelectedFiles } from "html5-file-selector";
 import UploadIcon from "../icons/Upload";
@@ -15,7 +16,7 @@ const Preview = ({ meta }: IPreviewProps) => {
 	const { name, percent, status, previewUrl } = meta;
 	return (
 		// eslint-disable-next-line @next/next/no-img-element
-		<img style={{ height: "100%", width: "100%", objectFit: "contain" }} src={previewUrl ?? ""} alt="uploaded photo" />
+		<img style={{ height: "100%", width: "100%", objectFit: "contain" }} src={previewUrl ?? ""} alt={name} />
 	);
 };
 
@@ -46,7 +47,7 @@ const Layout = ({ input, previews, dropzoneProps, files, extra: { maxFiles, onRe
 const Input = ({ accept, onFiles, getFilesFromEvent }: IInputProps) => {
 	return (
 		<label style={{ cursor: "pointer", textAlign: "center" }}>
-			<UploadIcon height="25%" width="25%" />
+			{/* {<UploadIcon height="25%" width="25%" />} */}
 			<input
 				style={{ visibility: "hidden", height: "100%", width: "100%" }}
 				type="file"
@@ -63,12 +64,12 @@ const Input = ({ accept, onFiles, getFilesFromEvent }: IInputProps) => {
 	);
 };
 
-interface DropzoneProps {
+interface DropzoneProps extends Partial<IDropzoneProps> {
 	setFile: (file: File) => void;
 	accept: string;
 	rounded?: boolean;
 }
-const Dropzone = ({ setFile, accept, rounded }: DropzoneProps) => {
+const Dropzone = ({ setFile, accept, rounded, multiple }: DropzoneProps) => {
 	const handleChangeStatus = (fileWithMeta: IFileWithMeta, status: StatusValue) => {
 		if (status === "done") {
 			setFile(fileWithMeta.file);
@@ -87,8 +88,8 @@ const Dropzone = ({ setFile, accept, rounded }: DropzoneProps) => {
 		<ReactDropzone
 			PreviewComponent={Preview}
 			onChangeStatus={handleChangeStatus}
-			maxFiles={1}
-			multiple={false}
+			maxFiles={3}
+			multiple={multiple}
 			accept={accept}
 			LayoutComponent={Layout}
 			InputComponent={Input}

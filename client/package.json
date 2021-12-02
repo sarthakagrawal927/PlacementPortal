@@ -3,6 +3,8 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
+		"codegen-build": "graphql-codegen --require dotenv/config --config codegen.yml",
+		"codegen": "graphql-codegen --require dotenv/config --config codegen.yml dotenv_config_path=.env.development.local",
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
@@ -17,14 +19,18 @@
 		"@mui/styled-engine": "npm:@mui/styled-engine-sc@latest",
 		"@mui/styled-engine-sc": "^5.1.0",
 		"@types/styled-components": "^5.1.15",
+		"babel-plugin-styled-components": "^2.0.1",
+		"date-fns": "^2.26.0",
 		"graphql": "^16.0.1",
 		"html5-file-selector": "^2.1.0",
 		"next": "12.0.3",
+		"postcss": "^8.4.4",
 		"react": "17.0.2",
 		"react-dom": "17.0.2",
 		"react-dropzone-uploader": "^2.11.0",
 		"react-hook-form": "^7.19.5",
-		"styled-components": "^5.3.3"
+		"styled-components": "^5.3.3",
+		"yup": "^0.32.11"
 	},
 	"devDependencies": {
 		"@graphql-codegen/cli": "^2.2.2",

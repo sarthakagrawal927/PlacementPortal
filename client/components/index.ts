@@ -5,3 +5,6 @@ export { default as Dropzone } from "./Dropzone";
 export { default as Button } from "./Button";
 export { default as AppBar } from "./AppBar";
 export { default as Sidebar } from "./Sidebar";
+export { default as ComboBox } from "./ComboBox";
+export { default as DatePicker } from "./DatePicker";
+

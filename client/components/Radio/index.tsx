@@ -1,6 +1,6 @@
 import React from "react";
 import { styled, Theme } from "@mui/material/styles";
-import MaterialRadio, { RadioProps as MaterialRadioProps } from "@mui/material/Radio";
+import MUIRadio, { RadioProps as MUIRadioProps } from "@mui/material/Radio";
 
 const Icon = styled("span")<{ theme: Theme; height?: string; width?: string }>(({ theme, height, width }) => ({
 	borderRadius: "50%",
@@ -43,14 +43,14 @@ const CheckedIcon = styled(Icon)<{ theme: Theme; height?: string; width?: string
 	},
 }));
 
-interface RadioProps extends MaterialRadioProps {
+interface RadioProps extends MUIRadioProps {
 	height?: string;
 	width?: string;
 }
 
 const Radio = ({ width, height, ...props }: RadioProps) => {
 	return (
-		<MaterialRadio
+		<MUIRadio
 			sx={{
 				"&:hover": {
 					bgcolor: "transparent",

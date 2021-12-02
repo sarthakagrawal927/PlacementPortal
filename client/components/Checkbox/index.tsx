@@ -1,6 +1,6 @@
 import React from "react";
 import { styled, Theme } from "@mui/material/styles";
-import MaterialCheckbox, { CheckboxProps as MaterialCheckboxProps } from "@mui/material/Checkbox";
+import MUICheckbox, { CheckboxProps as MUICheckboxProps } from "@mui/material/Checkbox";
 
 const Icon = styled("span")<{ theme: Theme; height?: string; width?: string }>(({ theme, height, width }) => ({
 	borderRadius: 3,
@@ -46,14 +46,14 @@ const CheckedIcon = styled(Icon)<{ theme: Theme; height?: string; width?: string
 	},
 }));
 
-interface CheckboxProps extends MaterialCheckboxProps {
+interface CheckboxProps extends MUICheckboxProps {
 	width?: string;
 	height?: string;
 }
 
 const Checkbox = ({ width, height, ...props }: CheckboxProps) => {
 	return (
-		<MaterialCheckbox
+		<MUICheckbox
 			sx={{
 				"&:hover": { bgcolor: "transparent" },
 			}}
