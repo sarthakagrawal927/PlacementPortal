@@ -10,8 +10,7 @@ interface ComboBoxProps<T> extends Omit<AutocompleteProps<T, true, false, true>,
 	labelField?: string;
 	width?: string;
 	error: boolean;
-	helperText: string;
-	// value?: (string | T)[] | T ;
+	helperText?: string;
 	renderInput?: (params: object) => React.ReactNode;
 }
 

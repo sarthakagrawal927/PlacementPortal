@@ -124,7 +124,7 @@ const NewJobForm = () => {
 									multiple
 									// value={value}
 									freeSolo
-									helperText={errors?.eligibility?.branches?.message ?? ""}
+									// helperText={errors?.eligibility?.branches?.message ?? ""}
 									options={branches}
 									error={!!errors?.eligibility?.branches}
 									onChange={(e, data) => onChange(data)}
@@ -332,7 +332,7 @@ const NewJobForm = () => {
 							render={({ field: { onChange, ref, value, ...props } }) => (
 								<ComboBox
 									error={!!errors?.jobDetails?.locations}
-									helperText={errors.jobDetails?.locations?.message ?? ""}
+									// helperText={errors.jobDetails?.locations?.message ?? ""}
 									size="small"
 									sx={{ width: "95%", minWidth: "14rem" }}
 									label="Locations"

@@ -3,7 +3,7 @@ import { BaseSyntheticEvent } from "react";
 
 type Eligibility = {
 	cgpa: number;
-	branches: NestedValue<{ label: string }[]>;
+	branches: { label: string }[];
 	numberOfBacklogs: number;
 	tenthScore?: number;
 	twelvethScore?: number;
@@ -18,7 +18,7 @@ type JobDetails = {
 	stipend?: number;
 	category: string;
 	profile: string;
-	locations: NestedValue<string[]>;
+	locations: string[];
 	registrationStartDate: Date;
 	registrationEndDate: Date;
 	bond?: string;

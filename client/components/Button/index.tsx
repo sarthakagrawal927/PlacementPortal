@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import MUIButton, { LoadingButtonProps as MUIButtonProps } from "@mui/lab/LoadingButton";
-import { styled } from "@mui/system";
+import React, { useState } from "react";
+import MUIButton from "@mui/lab/LoadingButton";
+import { ButtonProps as MUIButtonProps } from "@mui/material/Button";
 
 interface ButtonProps extends MUIButtonProps {
 	text: string;

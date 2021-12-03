@@ -8,17 +8,17 @@ import { useTheme } from "@mui/material";
 
 const MainLayout = ({ children }: MainLayoutProps) => {
 	const theme = useTheme();
-	const AppBarStyles = {
-		borderBottom: `1px solid ${theme.uiColor.lightGray}`,
-		color: theme.uiColor.darkestGray,
-		backgroundColor: "white",
-		boxShadow: "0",
-		textAlign: "center",
-		padding: "1rem",
-		fontWeight: 600,
-		textTransform: "uppercase",
-		fontSize: "1.5rem",
-	};
+	// const AppBarStyles = {
+	// 	borderBottom: `1px solid ${theme.uiColor.lightGray}`,
+	// 	color: theme.uiColor.darkestGray,
+	// 	backgroundColor: "white",
+	// 	boxShadow: "0",
+	// 	textAlign: "center",
+	// 	padding: "1rem",
+	// 	fontWeight: 600,
+	// 	textTransform: "uppercase",
+	// 	fontSize: "1.5rem",
+	// };
 
 	return (
 		<>
@@ -28,7 +28,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 				<link rel="icon" type="image/ico" href="/images/favicon.ico" />
 			</Head>
 			<Box sx={{ display: "flex" }}>
-				<AppBar sx={AppBarStyles}>MIT Placement Portal</AppBar>
+				<AppBar>MIT Placement Portal</AppBar>
 				<Sidebar config={adminConfig} />
 				<Box component="main" sx={{ flexGrow: 1, p: 3 }}>
 					<Toolbar />
