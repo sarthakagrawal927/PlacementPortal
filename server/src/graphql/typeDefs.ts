@@ -8,10 +8,10 @@ const typeDefs = gql`
 		isStudent: String!
 	}
 	type Query {
-		
+		_dummy: String
 	}
 	type Mutation {
-
+		_dummy: String
 	}
 `;
 export default typeDefs;
