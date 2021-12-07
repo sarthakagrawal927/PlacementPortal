@@ -35,11 +35,10 @@ enum OfferType {
 }
 
 model Branch {
-  id           String        @id @default(uuid())
-  name         String
-  abbreviation String
-  users        User[]
-  eligibility  Eligibility[]
+  id          String        @id @default(uuid())
+  name        String
+  users       User[]
+  eligibility Eligibility[]
 }
 
 model User {
@@ -76,6 +75,7 @@ model Identification {
 
 model Academics {
   id               String @id @default(uuid())
+  name             String
   score            Float
   school           String
   yearOfCompletion String
@@ -125,14 +125,14 @@ model Shortlist {
 }
 
 model Eligibility {
-  id                    String   @id @default(uuid())
-  cgpa                  Float?
-  tenthScore            Float?
-  twelfthScore          Float?
-  diplomaScore          Float?
-  numberOfBacklogs      Int?
-  additionalRequirement String?
-  branches              Branch[]
+  id                 String   @id @default(uuid())
+  cgpa               Float?
+  tenthScore         Float?
+  twelfthScore       Float?
+  diplomaScore       Float?
+  numberOfBacklogs   Int?
+  additionalBacklogs Int?
+  branches           Branch[]
 
   job Job?
 }
@@ -142,7 +142,7 @@ model Job {
   profile               String
   category              Category    @default(CORE)
   description           String
-  ctc                   Int?
+  ctc                   String?
   stipend               Int?
   registrationStartDate DateTime
   registrationDeadline  DateTime
@@ -181,7 +181,7 @@ model CompanyPreference {
 model Student {
   regNo              String              @unique
   firstName          String
-  middleName         String?
+  middleName         String
   lastName           String
   altEmail           String
   dateOfBirth        DateTime
