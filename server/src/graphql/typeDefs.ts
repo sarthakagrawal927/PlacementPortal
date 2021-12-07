@@ -110,6 +110,7 @@ const typeDefs = gql`
 		profile: String!
 		category: Category!
 		description: String!
+		locations: [String]!
 		ctc: Int
 		stipend: Int
 		registrationStartDate: DateTime!
@@ -170,7 +171,7 @@ const typeDefs = gql`
 	}
 
 	type Query {
-		_dummy: String
+		getAllJobs: [Job]!
 	}
 	type Mutation {
 		_dummy: String

@@ -95,8 +95,8 @@ model Semester {
   backlogs    Int    @default(0)
   dateChanges Int    @default(0)
 
-  educationId String    @unique
-  education   Education @relation(fields: [educationId], references: [id])
+  educationID String    @unique
+  education   Education @relation(fields: [educationID], references: [id])
 }
 
 model Education {
@@ -120,8 +120,8 @@ model Shortlist {
   step     Step      @default(ELIGIBILITY)
   students Student[]
 
-  jobId String
-  job   Job    @relation(fields: [jobId], references: [id])
+  jobID String @unique
+  job   Job    @relation(fields: [jobID], references: [id])
 }
 
 model Eligibility {
@@ -142,21 +142,22 @@ model Job {
   profile               String
   category              Category    @default(CORE)
   description           String
+  locations             String[]
   ctc                   Int?
   stipend               Int?
-  registrationStartDate DateTime
+  registrationStartDate DateTime    @default(now())
   registrationDeadline  DateTime
   hrContact             String
   offerType             OfferType   @default(P)
-  isSpot                Boolean
+  isSpot                Boolean     @default(true)
   bond                  String
-  hasBond               Boolean
+  hasBond               Boolean     @default(false)
   shortlists            Shortlist[]
   students              Student[]
 
   eligibilityID String      @unique
   eligibility   Eligibility @relation(fields: [eligibilityID], references: [id])
-  companyID     String      @unique
+  companyID     String
   company       Company     @relation(fields: [companyID], references: [id])
 }
 
@@ -174,7 +175,7 @@ model CompanyPreference {
   company    String
   preference Int
 
-  studentID String
+  studentID String  @unique
   student   Student @relation(fields: [studentID], references: [userID])
 }
 
