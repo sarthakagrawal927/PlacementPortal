@@ -19,7 +19,6 @@
 		"@mui/styled-engine": "npm:@mui/styled-engine-sc@latest",
 		"@mui/styled-engine-sc": "^5.1.0",
 		"@types/styled-components": "^5.1.15",
-		"babel-plugin-styled-components": "^2.0.1",
 		"date-fns": "^2.26.0",
 		"graphql": "^16.0.1",
 		"html5-file-selector": "^2.1.0",
@@ -38,6 +37,7 @@
 		"@graphql-codegen/typescript-operations": "^2.2.0",
 		"@graphql-codegen/typescript-react-apollo": "^3.2.1",
 		"@types/react": "17.0.34",
+		"babel-plugin-styled-components": "^2.0.2",
 		"eslint": "7.32.0",
 		"eslint-config-next": "12.0.3",
 		"typescript": "4.4.4"

@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { uiColor, shadow, badgeColor } from "../styles/styles";
+import MainLayout from "layout";
 
 declare module "@mui/material/styles" {
 	interface Theme {

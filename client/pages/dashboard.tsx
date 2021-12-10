@@ -1,4 +1,4 @@
-import MainLayout from "./../layout";
+import MainLayout from "layout";
 import type { NextPage } from "next";
 import Menubar from "./../lib/dashboard/Menubar";
 import TableHead from "./../components/TableHead";

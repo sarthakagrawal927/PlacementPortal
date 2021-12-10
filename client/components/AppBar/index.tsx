@@ -6,7 +6,7 @@ const AppBar = ({ ...props }: AppBarProps) => {
 	return (
 		<MaterialAppBar
 			sx={{
-				zIndex: theme => theme.zIndex.drawer + 1,
+				zIndex: theme => theme.zIndex.drawer + 2,
 				borderBottom: `1px solid ${theme.uiColor.lightGray}`,
 				color: theme.uiColor.darkestGray,
 				backgroundColor: "white",

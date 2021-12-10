@@ -5,11 +5,11 @@ import Input from "../Input";
 
 interface ComboBoxProps<T> extends Omit<AutocompleteProps<T, true, false, true>, "renderInput" | "value"> {
 	multiple?: true | undefined;
-	label: string;
+	label?: string;
 	placeholder?: string;
 	labelField?: string;
 	width?: string;
-	error: boolean;
+	error?: boolean;
 	helperText?: string;
 	renderInput?: (params: object) => React.ReactNode;
 }
@@ -32,7 +32,6 @@ const ComboBox = <T extends { [key: string]: string | number } | string>({
 			multiple={multiple}
 			filterSelectedOptions={multiple ? true : false}
 			limitTags={2}
-			// value={value}
 			options={options}
 			getOptionLabel={(option: T) => {
 				if (typeof option === "string") return option;

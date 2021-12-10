@@ -91,7 +91,7 @@ export const UploadAttachmentsText = styled(Typography)`
 `;
 
 export const SubmitButton = styled(Button)`
-	margin-top: 2em;
+	margin-top: 2em !important;
 	font-size: 0.8rem;
 	padding: 0.5em 1em;
 `;
