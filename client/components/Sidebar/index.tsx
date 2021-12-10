@@ -14,13 +14,12 @@ interface SidebarProps extends DrawerProps {
 }
 
 const Sidebar = ({ ...props }: SidebarProps) => {
-	const drawerWidth = "18vw";
+	const drawerWidth = "15vw";
 	return (
 		<MaterialDrawer
 			variant="permanent"
 			sx={{
 				width: drawerWidth,
-				minWidth: 250,
 				flexShrink: 0,
 				[`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: "border-box" },
 			}}

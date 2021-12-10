@@ -4,22 +4,8 @@ import Sidebar from "./../components/Sidebar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import { adminConfig } from "./sidebarConfig";
-import { useTheme } from "@mui/material";
 
 const MainLayout = ({ children }: MainLayoutProps) => {
-	const theme = useTheme();
-	// const AppBarStyles = {
-	// 	borderBottom: `1px solid ${theme.uiColor.lightGray}`,
-	// 	color: theme.uiColor.darkestGray,
-	// 	backgroundColor: "white",
-	// 	boxShadow: "0",
-	// 	textAlign: "center",
-	// 	padding: "1rem",
-	// 	fontWeight: 600,
-	// 	textTransform: "uppercase",
-	// 	fontSize: "1.5rem",
-	// };
-
 	return (
 		<>
 			<Head>

@@ -1,20 +1,24 @@
 import { useRouter } from "next/router";
 import { useTheme } from "@mui/material";
 import MaterialListItem, { ListItemProps } from "@mui/material/ListItem";
-import Link from "next/link";
 
-const SidebarItem = ({ path, ...props }: SidebarItemProps) => {
+interface SidebarItemProps extends ListItemProps {
+	path: string;
+}
+
+const SidebarItem = ({ path, children }: SidebarItemProps) => {
 	const theme = useTheme();
 	const { asPath } = useRouter();
 	const isActive = asPath === path;
 	return (
-		<Link href={path}>
+		<a href={path}>
 			<MaterialListItem
 				sx={{
-					textTransform: "uppercase",
+					justifyContent: "center",
 					margin: "1.6rem 0rem",
 					padding: "1.5rem",
 					fontSize: "1.25rem",
+					fontWeight: "500",
 					borderRadius: "0px 6px 6px 1px",
 					borderRight: isActive ? `10px solid ${theme.uiColor.indigo}` : "none",
 					backgroundColor: isActive ? theme.uiColor.lightestGray : "none",
@@ -24,15 +28,10 @@ const SidebarItem = ({ path, ...props }: SidebarItemProps) => {
 					},
 				}}
 			>
-				{props.children}
+				{children}
 			</MaterialListItem>
-		</Link>
+		</a>
 	);
 };
-
-interface SidebarItemProps extends ListItemProps {
-	children: string;
-	path: string;
-}
 
 export default SidebarItem;
