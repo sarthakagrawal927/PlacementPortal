@@ -97,10 +97,10 @@ const typeDefs = gql`
 		id: String!
 		cgpa: Float
 		tenthScore: Float
-		twefthScore: Float
+		twelfthScore: Float
 		diplomaScore: Float
 		numberOfBacklogs: Int
-		addtionalRequirement: String
+		additionalRequirement: String
 		branches: [Branch]!
 	}
 
@@ -110,7 +110,7 @@ const typeDefs = gql`
 		profile: String!
 		category: Category!
 		description: String!
-		locations: [String]!
+		locations: [String!]!
 		ctc: Int
 		stipend: Int
 		registrationStartDate: DateTime!
@@ -127,6 +127,7 @@ const typeDefs = gql`
 	type Company {
 		id: String!
 		name: String!
+		abbreviation: String!
 		logo: String
 		aboutCompany: String
 		feedback: String
@@ -163,7 +164,7 @@ const typeDefs = gql`
 		education: Education!
 		skypeID: String!
 		linkedinID: String!
-		prefferedCompany: String!
+		preferredCompany: String!
 		companyPreferences: [CompanyPreference]!
 		currentOffers: [Job]
 		shortlists: [Shortlist]

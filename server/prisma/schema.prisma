@@ -37,7 +37,7 @@ enum OfferType {
 model Branch {
   id           String        @id @default(uuid())
   name         String
-  abbreviation String
+  abbreviation String        @unique
   users        User[]
   eligibility  Eligibility[]
 }
@@ -95,16 +95,16 @@ model Semester {
   backlogs    Int    @default(0)
   dateChanges Int    @default(0)
 
-  educationID String    @unique
-  education   Education @relation(fields: [educationID], references: [id])
+  educationID String?
+  education   Education? @relation(fields: [educationID], references: [id])
 }
 
 model Education {
-  id             String     @id @default(uuid())
-  jeeMainRank    String?
-  jeeAdancedRank String?
-  metRank        String?
-  semesters      Semester[]
+  id              String     @id @default(uuid())
+  jeeMainRank     String?
+  jeeAdvancedRank String?
+  metRank         String?
+  semesters       Semester[]
 
   tenthID   String     @unique
   tenth     Academics  @relation(name: "Tenth", fields: [tenthID], references: [id])
@@ -120,7 +120,7 @@ model Shortlist {
   step     Step      @default(ELIGIBILITY)
   students Student[]
 
-  jobID String @unique
+  jobID String
   job   Job    @relation(fields: [jobID], references: [id])
 }
 
@@ -150,7 +150,7 @@ model Job {
   hrContact             String
   offerType             OfferType   @default(P)
   isSpot                Boolean     @default(true)
-  bond                  String
+  bond                  String?
   hasBond               Boolean     @default(false)
   shortlists            Shortlist[]
   students              Student[]
@@ -175,7 +175,7 @@ model CompanyPreference {
   company    String
   preference Int
 
-  studentID String  @unique
+  studentID String
   student   Student @relation(fields: [studentID], references: [userID])
 }
 
