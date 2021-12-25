@@ -278,67 +278,67 @@ export const companies: Omit<Company, "id">[] = [
 
 export const companyPreferences: Omit<CompanyPreference, "id">[] = [
 	{
-		company: "GOOG",
+		company: "Google",
 		preference: 1,
 	},
 	{
-		company: "MSFT",
+		company: "Microsoft",
 		preference: 2,
 	},
 	{
-		company: "AMZN",
+		company: "Amazon",
 		preference: 3,
 	},
 	{
-		company: "FB",
+		company: "Facebook",
 		preference: 4,
 	},
 	{
-		company: "GOOG",
+		company: "Google",
 		preference: 2,
 	},
 	{
-		company: "MSFT",
+		company: "Microsoft",
 		preference: 4,
 	},
 	{
-		company: "AMZN",
+		company: "Amazon",
 		preference: 1,
 	},
 	{
-		company: "FB",
+		company: "Facebook",
 		preference: 2,
 	},
 	{
-		company: "GOOG",
+		company: "Google",
 		preference: 1,
 	},
 	{
-		company: "MSFT",
+		company: "Microsoft",
 		preference: 4,
 	},
 	{
-		company: "AMZN",
+		company: "Amazon",
 		preference: 3,
 	},
 	{
-		company: "FB",
+		company: "Facebook",
 		preference: 2,
 	},
 	{
-		company: "GOOG",
+		company: "Google",
 		preference: 4,
 	},
 	{
-		company: "MSFT",
+		company: "Microsoft",
 		preference: 3,
 	},
 	{
-		company: "AMZN",
+		company: "Amazon",
 		preference: 1,
 	},
 	{
-		company: "FB",
+		company: "Facebook",
 		preference: 2,
 	},
 ];
