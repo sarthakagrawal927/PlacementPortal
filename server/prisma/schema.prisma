@@ -60,9 +60,9 @@ model Parent {
   occupation   String?
   organization String?
 
-  fatherRelation Student? @relation("Father")
-  motherRelation Student? @relation("Mother")
-  guardian       Student? @relation("Guardian")
+  father   Student? @relation("Father")
+  mother   Student? @relation("Mother")
+  guardian Student? @relation("Guardian")
 }
 
 model Identification {
@@ -162,21 +162,25 @@ model Job {
 }
 
 model Company {
-  id           String  @id @default(uuid())
-  name         String
-  logo         String?
-  aboutCompany String?
-  feedback     String?
-  jobs         Job[]
+  id                 String              @id @default(uuid())
+  name               String
+  logo               String?
+  aboutCompany       String?
+  feedback           String?
+  jobs               Job[]
+  companyPreferences CompanyPreference[]
 }
 
 model CompanyPreference {
   id         String @id @default(uuid())
-  company    String
   preference Int
 
   studentID String
   student   Student @relation(fields: [studentID], references: [userID])
+  companyID String
+  company   Company @relation(fields: [companyID], references: [id])
+
+  @@unique([studentID, companyID])
 }
 
 model Student {

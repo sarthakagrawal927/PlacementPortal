@@ -21,9 +21,9 @@ const prisma = new PrismaClient();
 export async function seed() {
 	console.log("Deleting data...");
 	await prisma.shortlist.deleteMany({});
+	await prisma.companyPreference.deleteMany({});
 	await prisma.job.deleteMany({});
 	await prisma.eligibility.deleteMany({});
-	await prisma.companyPreference.deleteMany({});
 	await prisma.student.deleteMany({});
 	await prisma.user.deleteMany({});
 	await prisma.education.deleteMany({});
@@ -145,7 +145,6 @@ export async function seed() {
 
 	console.log("Adding students...");
 	var idxParent = 0;
-	var idxPref = 0;
 	var studentUserArr: User[] = [];
 	for (const [idx, student] of students.entries()) {
 		const generatedPass = await bcrypt.hash(student.password, 12);
@@ -199,11 +198,6 @@ export async function seed() {
 									id: educationArr[idx].id,
 								},
 							},
-							companyPreferences: {
-								createMany: {
-									data: [...companyPreferences.slice(idxPref, idxPref + 4)],
-								},
-							},
 							height: student.height,
 							weight: student.weight,
 							state: student.state,
@@ -222,7 +216,6 @@ export async function seed() {
 		);
 
 		idxParent += 2;
-		idxPref += 4;
 	}
 
 	console.log("Adding jobs...");
@@ -299,6 +292,31 @@ export async function seed() {
 		}
 
 		idxSL += 4;
+	}
+
+	console.log("Adding company preferences...");
+	companyArr.sort((a, b) => a.name.localeCompare(b.name));
+	var idxPref = 0;
+	for (const company of companyArr) {
+		for (var idx = idxPref; idx < idxPref + 4; idx++) {
+			console.log(company.name);
+			await prisma.companyPreference.create({
+				data: {
+					preference: companyPreferences[idx].preference,
+					company: {
+						connect: {
+							id: company.id,
+						},
+					},
+					student: {
+						connect: {
+							userID: studentEmailToUserIDMap.get(companyPreferences[idx].studentEmail),
+						},
+					},
+				},
+			});
+		}
+		idxPref += 4;
 	}
 }
 

@@ -127,7 +127,6 @@ const typeDefs = gql`
 	type Company {
 		id: String!
 		name: String!
-		abbreviation: String!
 		logo: String
 		aboutCompany: String
 		feedback: String
@@ -136,7 +135,7 @@ const typeDefs = gql`
 
 	type CompanyPreference {
 		id: String!
-		company: String!
+		company: Company!
 		preference: Int!
 	}
 

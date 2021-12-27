@@ -252,94 +252,109 @@ export const educations: Omit<Education, "id" | "semesters" | "tenth" | "twefth"
 export const companies: Omit<Company, "id">[] = [
 	{
 		name: "Google",
-		abbreviation: "GOOG",
 		aboutCompany: "Google is OG",
 		logo: "https://www.google.com/imgres?imgurl=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F2%2F2f%2FGoogle_2015_logo.svg%2F368px-Google_2015_logo.svg.png&imgrefurl=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FGoogle_logo&tbnid=A0NenI6HBdTXjM&vet=12ahUKEwj7yO70j_T0AhWEgmMGHV07CRMQMygAegUIARDPAQ..i&docid=YYcJ4Dx_qJL9iM&w=368&h=124&itg=1&q=google%20logo&ved=2ahUKEwj7yO70j_T0AhWEgmMGHV07CRMQMygAegUIARDPAQ",
 	},
 	{
 		name: "Microsoft",
-		abbreviation: "MSFT",
 		aboutCompany: "Microsoft is a company",
 		logo: "https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn.vox-cdn.com%2Fthumbor%2F0pAzN6LdawcEO1pxZXy-78_VgVU%3D%2F7x0%3A633x417%2F1400x1050%2Ffilters%3Afocal(7x0%3A633x417)%3Aformat(jpeg)%2Fcdn.vox-cdn.com%2Fassets%2F1311169%2Fmslogo.jpg&imgrefurl=https%3A%2F%2Fwww.theverge.com%2F2012%2F8%2F23%2F3262517%2Fmicrosoft-new-logo&tbnid=dfaxIolwQPwMWM&vet=12ahUKEwiurZankPT0AhWR-TgGHbqxB3EQMygEegUIARDZAQ..i&docid=xRwopGKzKdin0M&w=1400&h=1050&itg=1&q=microsoft%20logo&ved=2ahUKEwiurZankPT0AhWR-TgGHbqxB3EQMygEegUIARDZAQ",
 	},
 	{
 		name: "Amazon",
-		abbreviation: "AMZN",
 		aboutCompany: "Owns the world",
 		logo: "https://www.google.com/imgres?imgurl=http%3A%2F%2Fmedia.corporate-ir.net%2Fmedia_files%2FIROL%2F17%2F176060%2FOct18%2FAmazon%2520logo.PNG&imgrefurl=https%3A%2F%2Fpress.aboutamazon.com%2Fimages-videos%2F&tbnid=XEJ1Bo66DeGrHM&vet=12ahUKEwjdobHHkPT0AhV5xKACHdE4BFoQMygAegUIARDPAQ..i&docid=2LaeyZMrOCvsfM&w=3216&h=1352&itg=1&q=amazon%20logo&ved=2ahUKEwjdobHHkPT0AhV5xKACHdE4BFoQMygAegUIARDPAQ",
 	},
 	{
 		name: "Facebook",
-		abbreviation: "FB",
 		aboutCompany: "Facebook has all your data :(",
 		logo: "https://www.google.com/imgres?imgurl=https%3A%2F%2Fkernel.sr%2Fwp-content%2Fuploads%2F2020%2F06%2Ffacebook-scalable-graphics-icon-facebook-logo-facebook-logo-png-clip-art.png&imgrefurl=https%3A%2F%2Fkernel.sr%2Ffacebook-scalable-graphics-icon-facebook-logo-facebook-logo-png-clip-art%2F&tbnid=yyODOQ_s2NGeJM&vet=12ahUKEwjR89TekPT0AhVv-zgGHaSWDAwQMygTegUIARD7AQ..i&docid=cpkkZEv3XQZBDM&w=910&h=512&itg=1&q=facebook%20logo&ved=2ahUKEwjR89TekPT0AhVv-zgGHaSWDAwQMygTegUIARD7AQ",
 	},
 ];
 
-export const companyPreferences: Omit<CompanyPreference, "id">[] = [
+export const companyPreferences: (Omit<CompanyPreference, "id" | "company"> & {
+	companyName: string;
+	studentEmail: string;
+})[] = [
 	{
-		company: "Google",
-		preference: 1,
-	},
-	{
-		company: "Microsoft",
-		preference: 2,
-	},
-	{
-		company: "Amazon",
+		companyName: "Amazon",
 		preference: 3,
+		studentEmail: "johndoe@example.com",
 	},
 	{
-		company: "Facebook",
-		preference: 4,
-	},
-	{
-		company: "Google",
-		preference: 2,
-	},
-	{
-		company: "Microsoft",
-		preference: 4,
-	},
-	{
-		company: "Amazon",
+		companyName: "Amazon",
 		preference: 1,
+		studentEmail: "nishan@example.com",
 	},
 	{
-		company: "Facebook",
-		preference: 2,
-	},
-	{
-		company: "Google",
-		preference: 1,
-	},
-	{
-		company: "Microsoft",
-		preference: 4,
-	},
-	{
-		company: "Amazon",
+		companyName: "Amazon",
 		preference: 3,
+		studentEmail: "karan@example.com",
 	},
 	{
-		company: "Facebook",
-		preference: 2,
-	},
-	{
-		company: "Google",
-		preference: 4,
-	},
-	{
-		company: "Microsoft",
-		preference: 3,
-	},
-	{
-		company: "Amazon",
+		companyName: "Amazon",
 		preference: 1,
+		studentEmail: "sarthak@example.com",
 	},
 	{
-		company: "Facebook",
+		companyName: "Facebook",
+		preference: 4,
+		studentEmail: "johndoe@example.com",
+	},
+	{
+		companyName: "Facebook",
 		preference: 2,
+		studentEmail: "nishan@example.com",
+	},
+	{
+		companyName: "Facebook",
+		preference: 2,
+		studentEmail: "karan@example.com",
+	},
+	{
+		companyName: "Facebook",
+		preference: 2,
+		studentEmail: "sarthak@example.com",
+	},
+	{
+		companyName: "Google",
+		preference: 1,
+		studentEmail: "johndoe@example.com",
+	},
+	{
+		companyName: "Google",
+		preference: 3,
+		studentEmail: "nishan@example.com",
+	},
+	{
+		companyName: "Google",
+		preference: 1,
+		studentEmail: "karan@example.com",
+	},
+	{
+		companyName: "Google",
+		preference: 4,
+		studentEmail: "sarthak@example.com",
+	},
+	{
+		companyName: "Microsoft",
+		preference: 2,
+		studentEmail: "johndoe@example.com",
+	},
+	{
+		companyName: "Microsoft",
+		preference: 4,
+		studentEmail: "nishan@example.com",
+	},
+	{
+		companyName: "Microsoft",
+		preference: 4,
+		studentEmail: "karan@example.com",
+	},
+	{
+		companyName: "Microsoft",
+		preference: 3,
+		studentEmail: "sarthak@example.com",
 	},
 ];
 
