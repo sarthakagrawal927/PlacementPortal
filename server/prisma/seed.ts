@@ -299,7 +299,6 @@ export async function seed() {
 	var idxPref = 0;
 	for (const company of companyArr) {
 		for (var idx = idxPref; idx < idxPref + 4; idx++) {
-			console.log(company.name);
 			await prisma.companyPreference.create({
 				data: {
 					preference: companyPreferences[idx].preference,

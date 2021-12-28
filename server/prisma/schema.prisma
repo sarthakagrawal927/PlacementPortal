@@ -40,6 +40,9 @@ model Branch {
   abbreviation String        @unique
   users        User[]
   eligibility  Eligibility[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model User {
@@ -51,6 +54,9 @@ model User {
   branchID String
   branch   Branch   @relation(fields: [branchID], references: [id])
   student  Student?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Parent {
@@ -63,6 +69,9 @@ model Parent {
   father   Student? @relation("Father")
   mother   Student? @relation("Mother")
   guardian Student? @relation("Guardian")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Identification {
@@ -72,6 +81,9 @@ model Identification {
   passportNumber String?
 
   student Student?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Academics {
@@ -85,6 +97,9 @@ model Academics {
   tenth   Education? @relation("Tenth")
   twelfth Education? @relation("Twelfth")
   diploma Education? @relation("Diploma")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Semester {
@@ -97,6 +112,9 @@ model Semester {
 
   educationID String?
   education   Education? @relation(fields: [educationID], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Education {
@@ -113,6 +131,9 @@ model Education {
   diplomaID String?    @unique
   diploma   Academics? @relation(name: "Diploma", fields: [diplomaID], references: [id])
   student   Student?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Shortlist {
@@ -122,6 +143,9 @@ model Shortlist {
 
   jobID String
   job   Job    @relation(fields: [jobID], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Eligibility {
@@ -135,6 +159,9 @@ model Eligibility {
   branches              Branch[]
 
   job Job?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Job {
@@ -159,6 +186,9 @@ model Job {
   eligibility   Eligibility @relation(fields: [eligibilityID], references: [id])
   companyID     String
   company       Company     @relation(fields: [companyID], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Company {
@@ -169,6 +199,9 @@ model Company {
   feedback           String?
   jobs               Job[]
   companyPreferences CompanyPreference[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model CompanyPreference {
@@ -179,6 +212,9 @@ model CompanyPreference {
   student   Student @relation(fields: [studentID], references: [userID])
   companyID String
   company   Company @relation(fields: [companyID], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@unique([studentID, companyID])
 }
@@ -219,4 +255,7 @@ model Student {
   identification   Identification @relation(fields: [identificationID], references: [id])
   educationID      String         @unique
   education        Education      @relation(fields: [educationID], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

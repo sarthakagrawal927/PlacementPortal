@@ -33,6 +33,9 @@ const typeDefs = gql`
 		id: String!
 		name: String!
 		abbreviation: String!
+
+		createdAt: DateTime
+		updatedAt: DateTime
 	}
 
 	type User {
@@ -41,6 +44,9 @@ const typeDefs = gql`
 		password: String!
 		userType: UserType!
 		branch: Branch!
+
+		createdAt: DateTime
+		updatedAt: DateTime
 	}
 
 	type Parent {
@@ -49,6 +55,9 @@ const typeDefs = gql`
 		phoneNumber: String
 		occupation: String
 		organization: String
+
+		createdAt: DateTime
+		updatedAt: DateTime
 	}
 
 	type Identification {
@@ -56,6 +65,9 @@ const typeDefs = gql`
 		aadharNumber: String
 		panNumber: String
 		passportNumber: String
+
+		createdAt: DateTime
+		updatedAt: DateTime
 	}
 
 	type Academics {
@@ -65,6 +77,9 @@ const typeDefs = gql`
 		yearOfCompletion: String!
 		country: String!
 		board: String!
+
+		createdAt: DateTime
+		updatedAt: DateTime
 	}
 
 	type Semester {
@@ -74,6 +89,9 @@ const typeDefs = gql`
 		credits: Int!
 		backlogs: Int!
 		dateChanges: Int!
+
+		createdAt: DateTime
+		updatedAt: DateTime
 	}
 
 	type Education {
@@ -85,12 +103,18 @@ const typeDefs = gql`
 		jeeAdvancedRank: String
 		metRank: String
 		semesters: [Semester]!
+
+		createdAt: DateTime
+		updatedAt: DateTime
 	}
 
 	type Shortlist {
 		id: String!
 		step: Step!
 		students: [Student]!
+
+		createdAt: DateTime
+		updatedAt: DateTime
 	}
 
 	type Eligibility {
@@ -102,6 +126,9 @@ const typeDefs = gql`
 		numberOfBacklogs: Int
 		additionalRequirement: String
 		branches: [Branch]!
+
+		createdAt: DateTime
+		updatedAt: DateTime
 	}
 
 	type Job {
@@ -122,6 +149,9 @@ const typeDefs = gql`
 		hasBond: Boolean!
 		shorlists: [Shortlist]
 		eligibility: Eligibility!
+
+		createdAt: DateTime
+		updatedAt: DateTime
 	}
 
 	type Company {
@@ -131,12 +161,18 @@ const typeDefs = gql`
 		aboutCompany: String
 		feedback: String
 		jobs: [Job]
+
+		createdAt: DateTime
+		updatedAt: DateTime
 	}
 
 	type CompanyPreference {
 		id: String!
 		company: Company!
 		preference: Int!
+
+		createdAt: DateTime
+		updatedAt: DateTime
 	}
 
 	type Student {
@@ -168,6 +204,9 @@ const typeDefs = gql`
 		currentOffers: [Job]
 		shortlists: [Shortlist]
 		physicalDisability: String!
+
+		createdAt: DateTime
+		updatedAt: DateTime
 	}
 
 	type Query {

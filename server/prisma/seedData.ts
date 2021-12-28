@@ -110,7 +110,7 @@ export const tenth: Omit<Academics, "id">[] = [
 		board: "CBSE",
 		country: "India",
 		school: "ABC School",
-		score: 8.5,
+		score: 85,
 		yearOfCompletion: "2017",
 	},
 	{
@@ -124,14 +124,14 @@ export const tenth: Omit<Academics, "id">[] = [
 		board: "ICSE",
 		country: "UAE",
 		school: "LMN School",
-		score: 9.5,
+		score: 95,
 		yearOfCompletion: "2016",
 	},
 	{
 		board: "CBSE",
 		country: "UAE",
 		school: "WDI School",
-		score: 9.5,
+		score: 90,
 		yearOfCompletion: "2016",
 	},
 ];
