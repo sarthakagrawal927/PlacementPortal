@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Control, useForm } from "react-hook-form";
+import { FormInput } from "../new-job/types";
 
 interface UseDialogReturn {
 	open: boolean;
@@ -46,5 +48,16 @@ export const useDialog = (): UseDialogReturn => {
 		handleClickOpen,
 		handleClose,
 		students,
+	};
+};
+
+interface UseUpdateCompanyReturn {
+	control: Control<FormInput, object>;
+}
+
+export const useUpdateCompany = (): UseUpdateCompanyReturn => {
+	const { control } = useForm<FormInput>();
+	return {
+		control,
 	};
 };

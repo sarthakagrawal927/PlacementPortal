@@ -34,7 +34,7 @@ theme = createTheme({
 			contrastText: theme.uiColor.white,
 		},
 		error: {
-			main: theme.uiColor.red,
+			main: theme.uiColor.darkRed,
 			contrastText: theme.uiColor.white,
 		},
 	},

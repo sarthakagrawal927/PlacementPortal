@@ -4,6 +4,8 @@ body {
 	padding: 0;
 	margin: 0;
 	font-family: "Inter", Segoe UI, Roboto, Helvetica, sans-serif;
+	width: 100%;
+	height: 100%;
 }
 
 a {
@@ -21,4 +23,7 @@ th:first-child {
 
 th:last-child {
 	border-radius: 0 6px 0 0;
+}
+#__next {
+	height: 100%;
 }

@@ -13,10 +13,10 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 				<meta name="description" content="Placement portal of Manipal Institute of Technology." />
 				<link rel="icon" type="image/ico" href="/images/favicon.ico" />
 			</Head>
-			<Box sx={{ display: "flex" }}>
+			<Box sx={{ display: "flex", width: "100%", height: "100%" }}>
 				<AppBar>MIT Placement Portal</AppBar>
 				<Sidebar config={adminConfig} />
-				<Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+				<Box component="main" sx={{ flexGrow: 1, p: 4 }}>
 					<Toolbar />
 					{children}
 				</Box>

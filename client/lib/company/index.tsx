@@ -51,7 +51,7 @@ const CompanyProfile = () => {
 
 					<JobSpecRow>
 						<JobSpec name="10th" value={`${company.tenthScore}%`} />
-						<JobSpec name="12th" value={`${company.twelvethScore}%`} />
+						<JobSpec name="12th" value={`${company.twelfthScore}%`} />
 						<JobSpec name="CGPA" value={company.CGPA} />
 						<JobSpec name="Backlogs" value={company.numberOfBacklogs} />
 					</JobSpecRow>

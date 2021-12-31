@@ -10,7 +10,7 @@ export const company = {
 	isSpot: true,
 	locations: ["Bengaluru", "Hyderabad", "Noida"],
 	tenthScore: "75",
-	twelvethScore: "75",
+	twelfthScore: "75",
 	diplomaScore: "75",
 	CGPA: "7",
 	numberOfBacklogs: "0",
