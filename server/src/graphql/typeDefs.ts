@@ -212,8 +212,38 @@ const typeDefs = gql`
 	type Query {
 		getAllJobs: [Job]!
 	}
+
+	input EligibilityInput {
+		cgpa: Float
+		tenthScore: Float
+		twelfthScore: Float
+		diplomaScore: Float
+		numberOfBacklogs: Int
+		additionalRequirement: String
+		branchIDs: [String!]!
+	}
+
+	input CreateNewJobInput {
+		companyID: String!
+		profile: String!
+		category: Category!
+		description: String!
+		locations: [String!]!
+		ctc: Int
+		stipend: Int
+		registrationStartDate: DateTime!
+		registrationDeadline: DateTime!
+		hrContact: String!
+		offerType: OfferType!
+		isSpot: Boolean!
+		bond: String
+		hasBond: Boolean!
+		eligibility: EligibilityInput!
+	}
+
 	type Mutation {
-		_dummy: String
+		createNewJob(createNewJobInput: CreateNewJobInput!): Job!
 	}
 `;
+
 export default typeDefs;
