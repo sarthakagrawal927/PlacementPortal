@@ -1,8 +1,17 @@
 import { ApolloContext } from "../../../context";
 import { MutationResolvers, Job } from "../../../types/graphql";
+import { ValidateCreateNewJobInput } from "./utils";
+import { UserInputError } from "apollo-server";
 
 export const mutations: MutationResolvers<ApolloContext, Job> = {
 	async createNewJob(_, { createNewJobInput }, { prisma }: ApolloContext) {
+		const { errors, isValid } = await ValidateCreateNewJobInput({
+			...createNewJobInput,
+		});
+		if (!isValid) {
+			throw new UserInputError(Object.values(errors).find(error => error !== null) ?? "", { errors });
+		}
+
 		const job: Job = await prisma.job.create({
 			data: {
 				profile: createNewJobInput.profile,

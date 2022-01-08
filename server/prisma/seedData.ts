@@ -491,7 +491,7 @@ export const eligibilities: (Omit<Eligibility, "id" | "branches"> & {
 		branchesAbrr: ["IT", "CSE", "CCE"],
 	},
 	{
-		cgpa: 90,
+		cgpa: 9.0,
 		tenthScore: 90,
 		twelfthScore: 90,
 		diplomaScore: 90,
