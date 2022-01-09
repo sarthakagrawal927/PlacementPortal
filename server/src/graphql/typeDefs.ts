@@ -243,6 +243,8 @@ const typeDefs = gql`
 
 	type Mutation {
 		createNewJob(createNewJobInput: CreateNewJobInput!): Job!
+
+		deleteJob(jobID: String!): Job!
 	}
 `;
 

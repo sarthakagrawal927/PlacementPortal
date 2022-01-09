@@ -21,7 +21,11 @@ type CreateNewJobError = {
 	branchIDs: string | null;
 };
 
-export const ValidateCreateNewJobInput = async ({
+type DeleteJobError = {
+	jobID: string | null;
+};
+
+export const validateCreateNewJobInput = async ({
 	...createNewJobInput
 }: CreateNewJobInput): Promise<{ errors: CreateNewJobError; isValid: boolean }> => {
 	const errors: CreateNewJobError = {
@@ -118,11 +122,6 @@ export const ValidateCreateNewJobInput = async ({
 	if (createNewJobInput.eligibility.diplomaScore && createNewJobInput.eligibility.diplomaScore > 100)
 		errors.diplomaScore = "Diploma score is invalid";
 
-	if (createNewJobInput.eligibility.twelfthScore && createNewJobInput.eligibility.diplomaScore) {
-		errors.twelfthScore = "Only one of twelfth score or diploma score can be provided";
-		errors.diplomaScore = "Only one of twelfth score or diploma score can be provided";
-	}
-
 	for (const branchID of createNewJobInput.eligibility.branchIDs) {
 		if (!branchID) {
 			errors.branchIDs = "Branch ID is required";
@@ -137,6 +136,28 @@ export const ValidateCreateNewJobInput = async ({
 			errors.branchIDs = "Branch ID is invalid";
 			break;
 		}
+	}
+
+	return {
+		errors: errors,
+		isValid: Object.values(errors).every(value => value === null),
+	};
+};
+
+export const validateDeleteJob = async (jobID: string): Promise<{ errors: DeleteJobError; isValid: boolean }> => {
+	const errors: DeleteJobError = {
+		jobID: null,
+	};
+
+	if (jobID.trim() === "") {
+		errors.jobID = "ID cannot be empty";
+	} else {
+		const job = await prisma.job.findUnique({
+			where: {
+				id: jobID,
+			},
+		});
+		if (!job) errors.jobID = "Job with this ID does not exist";
 	}
 
 	return {

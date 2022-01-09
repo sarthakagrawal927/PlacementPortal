@@ -1,11 +1,11 @@
 import { ApolloContext } from "../../../context";
 import { MutationResolvers, Job } from "../../../types/graphql";
-import { ValidateCreateNewJobInput } from "./utils";
+import { validateCreateNewJobInput, validateDeleteJob } from "./utils";
 import { UserInputError } from "apollo-server";
 
 export const mutations: MutationResolvers<ApolloContext, Job> = {
 	async createNewJob(_, { createNewJobInput }, { prisma }: ApolloContext) {
-		const { errors, isValid } = await ValidateCreateNewJobInput({
+		const { errors, isValid } = await validateCreateNewJobInput({
 			...createNewJobInput,
 		});
 		if (!isValid) {
@@ -49,6 +49,31 @@ export const mutations: MutationResolvers<ApolloContext, Job> = {
 			include: {
 				company: true,
 				eligibility: { include: { branches: true } },
+			},
+		});
+
+		return job;
+	},
+
+	async deleteJob(_, { jobID }, { prisma }: ApolloContext) {
+		const { errors, isValid } = await validateDeleteJob(jobID);
+		if (!isValid) {
+			throw new UserInputError(Object.values(errors).find(error => error !== null) ?? "", { errors });
+		}
+
+		const job: Job = await prisma.job.delete({
+			where: {
+				id: jobID,
+			},
+			include: {
+				company: true,
+				eligibility: { include: { branches: true } },
+			},
+		});
+
+		await prisma.eligibility.delete({
+			where: {
+				id: job.eligibility.id,
 			},
 		});
 
