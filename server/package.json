@@ -20,7 +20,7 @@
 		"dev": "concurrently \"yarn watch\" \"nodemon dist/server.js\" \"yarn codegen --watch\"",
 		"watch": "tsc -w",
 		"build": "yarn codegen && tsc",
-		"start": "node dist/server.js",
+		"start": "npx prisma generate && node dist/server.js",
 		"postinstall": "prisma generate",
 		"ts-node": "ts-node --compiler-options {\\\"module\\\":\\\"commonjs\\\"}"
 	},
