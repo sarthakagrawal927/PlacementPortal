@@ -9,7 +9,7 @@ const server = new ApolloServer({
 	typeDefs,
 	resolvers,
 	context,
-	introspection: process.env.NODE_ENV === "development" ? true : false,
+	introspection: process.env.NODE_ENV !== "production",
 });
 
 server.listen({ port: PORT }, () => console.log(`🚀 Server listening at: http://localhost:${PORT}`));
