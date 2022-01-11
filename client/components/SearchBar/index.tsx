@@ -55,7 +55,11 @@ export default function CustomizedInputBase() {
 					setInputValue(e.target.value);
 				}}
 			/>
-			<IconButton type="submit" sx={{ p: "18px", height: "5px", width: "5px" }} aria-label="search">
+			<IconButton
+				type="submit"
+				sx={{ p: "18px", height: "0.7em", width: "0.7em", color: theme.uiColor.gray }}
+				aria-label="search"
+			>
 				<SearchIcon />
 			</IconButton>
 		</Paper>

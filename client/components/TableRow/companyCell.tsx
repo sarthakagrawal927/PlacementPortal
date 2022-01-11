@@ -16,12 +16,18 @@ const CompanyCell = ({ name, logo, registrations }: TableCellProps) => {
 	return (
 		<TableCell>
 			<Stack direction="row" spacing={2}>
-				<img src={logo} alt={name} style={{ width: "2.5rem", height: "2.5rem" }} />
+				<img src={logo} alt={name} style={{ width: "2rem", height: "2rem", margin: "auto 0" }} />
 				<Stack sx={{ textAlign: "left" }} justifyContent="space-around">
 					<Typography variant="body1">{name}</Typography>
 					<Typography
 						variant="body1"
-						sx={{ textTransform: "uppercase", color: theme.uiColor.darkBlue, fontSize: "0.5rem" }}
+						sx={{
+							textTransform: "uppercase",
+							color: theme.uiColor.darkBlue,
+							fontSize: "0.5rem",
+							fontWeight: 600,
+							letterSpacing: "0.5px",
+						}}
 					>
 						Registrations: {registrations}
 					</Typography>

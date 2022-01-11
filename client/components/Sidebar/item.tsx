@@ -15,12 +15,12 @@ const SidebarItem = ({ path, children }: SidebarItemProps) => {
 			<MaterialListItem
 				sx={{
 					justifyContent: "center",
-					margin: "1.6rem 0rem",
+					margin: "1rem 0rem",
 					padding: "1.5rem",
 					fontSize: "1.25rem",
 					fontWeight: "500",
 					borderRadius: "0px 6px 6px 1px",
-					borderRight: isActive ? `10px solid ${theme.uiColor.indigo}` : "none",
+					borderRight: isActive ? `8px solid ${theme.uiColor.indigo}` : "none",
 					backgroundColor: isActive ? theme.uiColor.lightestGray : "none",
 					"&:hover": {
 						cursor: "pointer",

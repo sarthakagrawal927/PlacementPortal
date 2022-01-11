@@ -17,7 +17,7 @@ const SmallerTypography = styled(Typography)({
 });
 const TableRow = ({ index, company }: TableRowProps) => {
 	const theme = useTheme();
-
+	const locations = company.location.join(", ");
 	return (
 		<MaterialTableRow
 			sx={{
@@ -43,10 +43,8 @@ const TableRow = ({ index, company }: TableRowProps) => {
 			</TableCell>
 
 			<TableCell>
-				<Stack direction="column">
-					{company.location.map(location => {
-						return <SmallerTypography key={location}> {location}</SmallerTypography>;
-					})}
+				<Stack direction="column" sx={{ maxWidth: "8vw" }}>
+					<SmallerTypography>{locations}</SmallerTypography>
 				</Stack>
 			</TableCell>
 
