@@ -4,7 +4,7 @@ import type { NextPage } from "next";
 const Analytics: NextPage = () => {
 	return (
 		<MainLayout>
-			<div>Analytics</div>;
+			<div>Analytics</div>
 		</MainLayout>
 	);
 };

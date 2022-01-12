@@ -1,13 +1,12 @@
 import React from "react";
-import NewJobForm from "lib/new-job";
 import MainLayout from "layout";
 
-const NewJobPage = () => {
+const ProfileUpdate = () => {
 	return (
 		<MainLayout>
-			<NewJobForm />
+			<div>Profile Update</div>
 		</MainLayout>
 	);
 };
 
-export default NewJobPage;
+export default ProfileUpdate;

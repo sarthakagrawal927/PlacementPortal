@@ -1,13 +1,13 @@
 import React from "react";
-import NewJobForm from "lib/new-job";
+import Profile from "lib/profile";
 import MainLayout from "layout";
 
-const NewJobPage = () => {
+const ProfilePage = () => {
 	return (
 		<MainLayout>
-			<NewJobForm />
+			<Profile />
 		</MainLayout>
 	);
 };
 
-export default NewJobPage;
+export default ProfilePage;

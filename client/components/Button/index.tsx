@@ -13,6 +13,7 @@ const Button = ({ text, variant, onClick, rounded, ...props }: ButtonProps) => {
 			sx={{ borderRadius: rounded ? "50px" : "4px" }}
 			onMouseEnter={() => setOutlined(!outlined)}
 			onMouseLeave={() => setOutlined(!outlined)}
+			onClick={onClick}
 			variant={outlined ? "outlined" : "contained"}
 			disableElevation
 			{...props}
