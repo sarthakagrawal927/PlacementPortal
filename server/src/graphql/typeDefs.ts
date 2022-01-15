@@ -241,8 +241,38 @@ const typeDefs = gql`
 		eligibility: EligibilityInput!
 	}
 
+	input EligibilityUpdateInput {
+		cgpa: Float
+		tenthScore: Float
+		twelfthScore: Float
+		diplomaScore: Float
+		numberOfBacklogs: Int
+		additionalRequirement: String
+		branchIDs: [String!]
+	}
+
+	input UpdateJobInput {
+		jobID: String!
+		profile: String
+		category: Category
+		description: String
+		locations: [String!]
+		ctc: Int
+		stipend: Int
+		registrationStartDate: DateTime
+		registrationDeadline: DateTime
+		hrContact: String
+		offerType: OfferType
+		isSpot: Boolean
+		bond: String
+		hasBond: Boolean
+		eligibility: EligibilityUpdateInput
+	}
+
 	type Mutation {
 		createNewJob(createNewJobInput: CreateNewJobInput!): Job!
+
+		updateJob(updateJobInput: UpdateJobInput!): Job!
 
 		deleteJob(jobID: String!): Job!
 	}
