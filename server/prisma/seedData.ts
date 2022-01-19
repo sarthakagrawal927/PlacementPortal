@@ -358,7 +358,7 @@ export const companyPreferences: (Omit<CompanyPreference, "id" | "company"> & {
 	},
 ];
 
-export const students: ((Omit<User, "id" | "branch"> & { branchAbbr: string }) &
+export const students: ((Omit<User, "id" | "branch"> & { password: string; branchAbbr: string }) &
 	Omit<Student, "id" | "user" | "education" | "identification" | "companyPreferences">)[] = [
 	{
 		email: "johndoe@example.com",
@@ -382,7 +382,7 @@ export const students: ((Omit<User, "id" | "branch"> & { branchAbbr: string }) &
 		currentAddress: "street 1, there",
 		skypeID: "skype1",
 		linkedinID: "linkedin1",
-		preferredCompany: "GOOG",
+		preferredCompany: "Google",
 		physicalDisability: "None",
 	},
 	{
@@ -407,7 +407,7 @@ export const students: ((Omit<User, "id" | "branch"> & { branchAbbr: string }) &
 		currentAddress: "street 2, there",
 		skypeID: "skype2",
 		linkedinID: "linkedin2",
-		preferredCompany: "AMZN",
+		preferredCompany: "Amazon",
 		physicalDisability: "None",
 	},
 	{
@@ -431,7 +431,7 @@ export const students: ((Omit<User, "id" | "branch"> & { branchAbbr: string }) &
 		currentAddress: "street 3, there",
 		skypeID: "skype3",
 		linkedinID: "linkedin3",
-		preferredCompany: "MSFT",
+		preferredCompany: "Microsoft",
 		physicalDisability: "None",
 	},
 	{
@@ -455,7 +455,7 @@ export const students: ((Omit<User, "id" | "branch"> & { branchAbbr: string }) &
 		currentAddress: "street 4, there",
 		skypeID: "skype4",
 		linkedinID: "linkedin4",
-		preferredCompany: "FB",
+		preferredCompany: "Facebook",
 		physicalDisability: "None",
 	},
 ];

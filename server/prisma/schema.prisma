@@ -62,8 +62,8 @@ model User {
 model Parent {
   id           String  @id @default(uuid())
   name         String
-  phoneNumber  String?
-  occupation   String?
+  phoneNumber  String
+  occupation   String
   organization String?
 
   father   Student? @relation("Father")
@@ -237,8 +237,8 @@ model Student {
   currentAddress     String
   skypeID            String              @unique
   linkedinID         String              @unique
-  preferredCompany   String
-  physicalDisability String
+  preferredCompany   String?
+  physicalDisability String?             @default("NONE")
   companyPreferences CompanyPreference[]
   currentOffers      Job[]
   shortlists         Shortlist[]

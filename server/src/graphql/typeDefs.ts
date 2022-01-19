@@ -41,7 +41,6 @@ const typeDefs = gql`
 	type User {
 		id: String!
 		email: String!
-		password: String!
 		userType: UserType!
 		branch: Branch!
 
@@ -52,8 +51,8 @@ const typeDefs = gql`
 	type Parent {
 		id: String!
 		name: String!
-		phoneNumber: String
-		occupation: String
+		phoneNumber: String!
+		occupation: String!
 		organization: String
 
 		createdAt: DateTime
@@ -95,10 +94,10 @@ const typeDefs = gql`
 	}
 
 	type Education {
+		id: String!
 		tenth: Academics!
 		twefth: Academics
 		diploma: Academics
-		id: String!
 		jeeMainRank: String
 		jeeAdvancedRank: String
 		metRank: String
@@ -199,11 +198,11 @@ const typeDefs = gql`
 		education: Education!
 		skypeID: String!
 		linkedinID: String!
-		preferredCompany: String!
-		companyPreferences: [CompanyPreference]!
+		preferredCompany: String
+		companyPreferences: [CompanyPreference]
 		currentOffers: [Job]
 		shortlists: [Shortlist]
-		physicalDisability: String!
+		physicalDisability: String
 
 		createdAt: DateTime
 		updatedAt: DateTime
@@ -241,6 +240,79 @@ const typeDefs = gql`
 		eligibility: EligibilityInput!
 	}
 
+	input ParentInput {
+		name: String!
+		phoneNumber: String!
+		occupation: String!
+		organization: String
+	}
+
+	input AcademicsInput {
+		score: Float!
+		school: String!
+		yearOfCompletion: String!
+		country: String!
+		board: String!
+	}
+
+	input SemesterInput {
+		name: String!
+		gpa: Float!
+		credits: Int!
+		backlogs: Int!
+		dateChanges: Int!
+	}
+
+	input EducationInput {
+		tenth: AcademicsInput
+		twefth: AcademicsInput
+		diploma: AcademicsInput
+		jeeMainRank: String
+		jeeAdvancedRank: String
+		metRank: String
+		semesters: [SemesterInput!]!
+	}
+
+	input IdentificationInput {
+		aadharNumber: String
+		panNumber: String
+		passportNumber: String
+	}
+
+	input StudentInput {
+		regNo: String!
+		firstName: String!
+		middleName: String
+		lastName: String!
+		altEmail: String!
+		dateOfBirth: DateTime!
+		phoneNumber: String!
+		altPhoneNumber: String!
+		height: String!
+		weight: String!
+		father: ParentInput
+		mother: ParentInput
+		guardian: ParentInput
+		state: String!
+		city: String!
+		country: String!
+		permanentAddress: String!
+		currentAddress: String!
+		identification: IdentificationInput!
+		education: EducationInput!
+		skypeID: String!
+		linkedinID: String!
+		physicalDisability: String
+	}
+
+	input CreateUserInput {
+		email: String!
+		password: String!
+		userType: UserType!
+		branchID: String!
+		student: StudentInput
+	}
+
 	input EligibilityUpdateInput {
 		cgpa: Float
 		tenthScore: Float
@@ -271,6 +343,7 @@ const typeDefs = gql`
 
 	type Mutation {
 		createNewJob(createNewJobInput: CreateNewJobInput!): Job!
+		createUser(createUserInput: CreateUserInput!): User!
 
 		updateJob(updateJobInput: UpdateJobInput!): Job!
 
