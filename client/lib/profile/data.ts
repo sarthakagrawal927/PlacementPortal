@@ -51,6 +51,10 @@ export const schoolDetails = [
 		yearOfCompletion: "2016",
 		country: "India",
 		heading: "Class 10th",
+		fieldName: "academicDetails.tenth" as
+			| "academicDetails.tenth"
+			| "academicDetails.twelfth"
+			| "academicDetails.diploma",
 	},
 	{
 		percentage: 97.3,
@@ -59,12 +63,16 @@ export const schoolDetails = [
 		yearOfCompletion: "2018",
 		country: "India",
 		heading: "Class 12th",
+		fieldName: "academicDetails.twelfth" as
+			| "academicDetails.tenth"
+			| "academicDetails.twelfth"
+			| "academicDetails.diploma",
 	},
 ];
 
 export const student = {
 	dateOfBirth: "28/01/2001",
-	gender: "Male",
+	gender: "Female",
 	caste: "General",
 	height: "182",
 	weight: "70",

@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
-import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
+const { yupResolver } = require("@hookform/resolvers/yup");
 import * as yup from "yup";
 import { FormInput, UseNewJobFormReturn, UseConstantsReturn, UseNewJobReturn, DefaultFormInput } from "./types";
 
@@ -108,8 +108,6 @@ export const useNewJobForm = (): UseNewJobFormReturn => {
 		defaultValues,
 		reValidateMode: "onChange",
 	});
-
-	const watchFields = watch();
 
 	const onSubmit = handleSubmit(data => {
 		console.log({ companyLogo, data, attachments });

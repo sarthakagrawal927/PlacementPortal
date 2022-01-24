@@ -6,18 +6,17 @@ interface ButtonProps extends MUIButtonProps {
 	rounded?: boolean;
 }
 
-const Button = ({ text, variant, onClick, rounded, ...props }: ButtonProps) => {
+const Button = ({ text, variant, rounded, ...props }: ButtonProps) => {
 	const [outlined, setOutlined] = useState(variant === "outlined");
 	return (
 		<MUIButton
 			sx={{ borderRadius: rounded ? "50px" : "4px" }}
 			onMouseEnter={() => setOutlined(!outlined)}
 			onMouseLeave={() => setOutlined(!outlined)}
-			onClick={onClick}
 			variant={outlined ? "outlined" : "contained"}
 			disableElevation
-			{...props}
 			loadingPosition="end"
+			{...props}
 		>
 			{text}
 		</MUIButton>

@@ -1,12 +1,13 @@
 import React from "react";
 import MainLayout from "layout";
+import ProfileUpdate from "lib/profile/update";
 
-const ProfileUpdate = () => {
+const ProfileUpdatePage = () => {
 	return (
 		<MainLayout>
-			<div>Profile Update</div>
+			<ProfileUpdate />
 		</MainLayout>
 	);
 };
 
-export default ProfileUpdate;
+export default ProfileUpdatePage;

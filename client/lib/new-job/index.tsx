@@ -295,7 +295,6 @@ const NewJobForm = () => {
 									label="Category"
 									freeSolo
 									options={categories}
-									// value={value}
 									onChange={(e, data) => onChange(data)}
 									{...props}
 								/>
