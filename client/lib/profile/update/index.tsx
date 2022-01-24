@@ -40,8 +40,6 @@ const ProfileUpdate = () => {
 				handleFormSubmit();
 			}}
 		>
-			{/* <pre>{JSON.stringify(watch(), null, 2)}</pre> */}
-			<pre>{JSON.stringify(errors, null, 2)}</pre>
 			<PersonalDetails>
 				<SectionHeading>Personal Details</SectionHeading>
 				<MainInfoRow>
