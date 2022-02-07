@@ -1,9 +1,21 @@
 import { ApolloContext } from "../../../context";
-import { Job, QueryResolvers } from "../../../types/graphql";
+import { Job, JobsDashboard, QueryResolvers } from "../../../types/graphql";
 
 export const queries: QueryResolvers<ApolloContext, Job> = {
 	getAllJobs: async (_, {}, { prisma }) => {
-		const jobs: Job[] | null = await prisma.job.findMany({
+		const job: JobsDashboard[] | null = await prisma.job.findMany({
+			include:{
+				company:true,
+			}
+		});
+
+		return job;
+	},
+	getJobDetails: async (_, { jobID }, { prisma }) => {
+		const job: Job | null = await prisma.job.findUnique({
+			where: {
+			  id: jobID,
+			},
 			include: {
 				company: true,
 				eligibility: {
@@ -11,9 +23,14 @@ export const queries: QueryResolvers<ApolloContext, Job> = {
 						branches: true,
 					},
 				},
+				shortlists:{
+					include:{
+						students:true,
+					},
+				},
 			},
-		});
+		  })
 
-		return jobs;
+		return job;
 	},
 };

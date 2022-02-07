@@ -153,6 +153,7 @@ const typeDefs = gql`
 		updatedAt: DateTime
 	}
 
+
 	type Company {
 		id: String!
 		name: String!
@@ -207,9 +208,25 @@ const typeDefs = gql`
 		createdAt: DateTime
 		updatedAt: DateTime
 	}
+	type JobsDashboard {
+		id: String!
+		company: Company!
+		profile: String!
+		category: Category!
+		locations: [String!]!
+		ctc: Int
+		stipend: Int 
+		registrationStartDate: DateTime!
+		registrationDeadline: DateTime!
+		offerType: OfferType!
+		isSpot: Boolean!
+		createdAt: DateTime
+		updatedAt: DateTime
+	}
 
 	type Query {
-		getAllJobs: [Job]!
+		getAllJobs: [JobsDashboard]!
+		getJobDetails(jobID: String!):Job
 	}
 
 	input EligibilityInput {
