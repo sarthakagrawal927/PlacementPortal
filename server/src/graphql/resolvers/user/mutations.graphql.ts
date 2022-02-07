@@ -1,9 +1,18 @@
 import { ApolloContext } from "../../../context";
 import { MutationResolvers, User } from "../../../types/graphql";
 import bcrypt from "bcryptjs";
+import { validateCreateUserInput } from "./utils";
+import { UserInputError } from "apollo-server";
 
 export const mutations: MutationResolvers<ApolloContext, User> = {
 	async createUser(_, { createUserInput }, { prisma }: ApolloContext) {
+		const { errors, isValid } = await validateCreateUserInput({
+			...createUserInput,
+		});
+		if (!isValid) {
+			throw new UserInputError(Object.values(errors).find(error => error !== null) ?? "", { errors });
+		}
+
 		const generatedPassword = await bcrypt.hash(createUserInput.password, 12);
 		const user: User = await prisma.user.create({
 			data: {
@@ -37,7 +46,7 @@ export const mutations: MutationResolvers<ApolloContext, User> = {
 					currentAddress: createUserInput.student?.currentAddress ?? "",
 					skypeID: createUserInput.student?.skypeID ?? "",
 					linkedinID: createUserInput.student?.linkedinID ?? "",
-					physicalDisability: createUserInput.student?.physicalDisability ?? "",
+					physicalDisability: createUserInput.student?.physicalDisability,
 					father: createUserInput.student?.father
 						? {
 								create: {

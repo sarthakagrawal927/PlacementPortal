@@ -281,7 +281,7 @@ const typeDefs = gql`
 	}
 
 	input EducationInput {
-		tenth: AcademicsInput
+		tenth: AcademicsInput!
 		twefth: AcademicsInput
 		diploma: AcademicsInput
 		jeeMainRank: String
