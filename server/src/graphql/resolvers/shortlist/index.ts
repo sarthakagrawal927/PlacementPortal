@@ -1,6 +1,6 @@
 import { queries } from "./queries.graphql";
 import { mutations } from "./mutations.graphql";
-const companyResolvers = {
+const shortlistResolvers = {
 	Query: {
 		...queries,
 	},
@@ -9,4 +9,4 @@ const companyResolvers = {
 	},
 };
 
-export default companyResolvers;
+export default shortlistResolvers;
