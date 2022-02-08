@@ -161,7 +161,6 @@ const typeDefs = gql`
 		aboutCompany: String
 		feedback: String
 		jobs: [Job]
-
 		createdAt: DateTime
 		updatedAt: DateTime
 	}
@@ -225,8 +224,9 @@ const typeDefs = gql`
 	}
 
 	type Query {
-		getAllJobs: [JobsDashboard]!
+		getAllJobs: [Job]!
 		getJobDetails(jobID: String!):Job
+		getAllCompanies: [Company]!
 	}
 
 	input EligibilityInput {
