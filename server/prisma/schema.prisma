@@ -146,6 +146,7 @@ model Shortlist {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  @@unique([step, jobID])
 }
 
 model Eligibility {

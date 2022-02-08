@@ -12,6 +12,12 @@ export const mutations: MutationResolvers<ApolloContext, Job> = {
 			throw new UserInputError(Object.values(errors).find(error => error !== null) ?? "", { errors });
 		}
 
+		const students = await prisma.student.findMany({
+			select: {
+				userID: true,
+			},
+		});
+
 		const job: Job = await prisma.job.create({
 			data: {
 				profile: createNewJobInput.profile,
@@ -45,10 +51,25 @@ export const mutations: MutationResolvers<ApolloContext, Job> = {
 						},
 					},
 				},
+				shortlists: {
+					create: {
+						step: "ELIGIBILITY",
+						students: {
+							connect: [...students?.map(student => ({ userID: student.userID }))],
+						},
+					},
+				},
 			},
 			include: {
 				company: true,
 				eligibility: { include: { branches: true } },
+			},
+		});
+
+		await prisma.shortlist.create({
+			data: {
+				step: "REGISTRATION",
+				jobID: job.id,
 			},
 		});
 

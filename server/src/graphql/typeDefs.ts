@@ -153,7 +153,6 @@ const typeDefs = gql`
 		updatedAt: DateTime
 	}
 
-
 	type Company {
 		id: String!
 		name: String!
@@ -207,6 +206,7 @@ const typeDefs = gql`
 		createdAt: DateTime
 		updatedAt: DateTime
 	}
+
 	type JobsDashboard {
 		id: String!
 		company: Company!
@@ -214,7 +214,7 @@ const typeDefs = gql`
 		category: Category!
 		locations: [String!]!
 		ctc: Int
-		stipend: Int 
+		stipend: Int
 		registrationStartDate: DateTime!
 		registrationDeadline: DateTime!
 		offerType: OfferType!
@@ -224,8 +224,8 @@ const typeDefs = gql`
 	}
 
 	type Query {
-		getAllJobs: [Job]!
-		getJobDetails(jobID: String!):Job
+		getAllJobs: [JobsDashboard]!
+		getJobDetails(jobID: String!): Job
 		getAllCompanies: [Company]!
 	}
 
@@ -363,6 +363,7 @@ const typeDefs = gql`
 		createUser(createUserInput: CreateUserInput!): User!
 
 		updateJob(updateJobInput: UpdateJobInput!): Job!
+		addStudentToJob(studentID: String!, jobID: String!): String!
 
 		deleteJob(jobID: String!): Job!
 	}
