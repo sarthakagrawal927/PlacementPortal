@@ -12,6 +12,7 @@ export const mutations: MutationResolvers<ApolloContext, Job> = {
 			throw new UserInputError(Object.values(errors).find(error => error !== null) ?? "", { errors });
 		}
 
+		// TODO: Filter only eligible students
 		const students = await prisma.student.findMany({
 			select: {
 				userID: true,

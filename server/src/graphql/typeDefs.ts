@@ -219,6 +219,8 @@ const typeDefs = gql`
 		registrationDeadline: DateTime!
 		offerType: OfferType!
 		isSpot: Boolean!
+		numberOfregistrations: Int
+
 		createdAt: DateTime
 		updatedAt: DateTime
 	}
