@@ -1,7 +1,7 @@
 import { ApolloContext } from "../../../context";
 import { MutationResolvers, Shortlist } from "../../../types/graphql";
 import { UserInputError } from "apollo-server";
-import { validateAddStudentToJobInput } from "./utils";
+import { validateAddShortlistInput, validateAddStudentToJobInput } from "./utils";
 
 export const mutations: MutationResolvers<ApolloContext, Shortlist> = {
 	async addStudentToJob(_, { studentID, jobID }, { prisma }: ApolloContext) {
@@ -13,7 +13,7 @@ export const mutations: MutationResolvers<ApolloContext, Shortlist> = {
 			throw new UserInputError(Object.values(errors).find(error => error !== null) ?? "", { errors });
 		}
 
-		await prisma.shortlist.update({
+		const shortlist = await prisma.shortlist.update({
 			where: {
 				step_jobID: {
 					step: "REGISTRATION",
@@ -29,6 +29,27 @@ export const mutations: MutationResolvers<ApolloContext, Shortlist> = {
 			},
 		});
 
-		return "Student added to Shortlist of the Job";
+		return shortlist.id;
+	},
+
+	async addShortlist(_, { addShortlistInput }, { prisma }: ApolloContext) {
+		const { errors, isValid } = await validateAddShortlistInput(addShortlistInput);
+		if (!isValid) {
+			throw new UserInputError(Object.values(errors).find(error => error !== null) ?? "", { errors });
+		}
+
+		const shortlist = await prisma.shortlist.create({
+			data: {
+				step: addShortlistInput.step,
+				job: {
+					connect: { id: addShortlistInput.jobID },
+				},
+				students: {
+					connect: [...addShortlistInput.studentIDs.map(studentID => ({ userID: studentID }))],
+				},
+			},
+		});
+
+		return shortlist.id;
 	},
 };

@@ -358,12 +358,19 @@ const typeDefs = gql`
 		eligibility: EligibilityUpdateInput
 	}
 
+	input AddShortlistInput {
+		jobID: String!
+		step: Step!
+		studentIDs: [String!]!
+	}
+
 	type Mutation {
 		createNewJob(createNewJobInput: CreateNewJobInput!): Job!
 		createUser(createUserInput: CreateUserInput!): User!
 
 		updateJob(updateJobInput: UpdateJobInput!): Job!
 		addStudentToJob(studentID: String!, jobID: String!): String!
+		addShortlist(addShortlistInput: AddShortlistInput!): String!
 
 		deleteJob(jobID: String!): Job!
 	}
