@@ -1,7 +1,7 @@
 import { ApolloContext } from "../../../context";
-import { MutationResolvers, User } from "../../../types/graphql";
+import { MutationResolvers, User, StudentReturn, Student } from "../../../types/graphql";
 import bcrypt from "bcryptjs";
-import { validateCreateUserInput } from "./utils";
+import { validateCreateUserInput, validateLoginInput, generateToken } from "./utils";
 import { UserInputError } from "apollo-server";
 
 export const mutations: MutationResolvers<ApolloContext, User> = {
@@ -139,5 +139,56 @@ export const mutations: MutationResolvers<ApolloContext, User> = {
 		}
 
 		return user;
+	},
+
+	async loginUser(_, { loginInput }, { prisma }: ApolloContext) {
+		const { errors, isValid } = await validateLoginInput(loginInput);
+		if (!isValid) {
+			throw new UserInputError(Object.values(errors).find(error => error !== null) ?? "", { errors });
+		}
+
+		const user: (User & { student: Omit<Student, "identification" | "education" | "user"> | null }) | null =
+			await prisma.user.findUnique({
+				where: {
+					email: loginInput.email,
+				},
+				select: {
+					id: true,
+					email: true,
+					password: true,
+					branch: true,
+					userType: true,
+					student: true,
+				},
+			});
+
+		const token = generateToken({
+			email: user?.email!,
+			id: user?.id!,
+			userType: user?.userType!,
+		});
+
+		var student: StudentReturn | null = null;
+		if (user?.userType === "STUDENT") {
+			student = {
+				regNo: user.student?.regNo!,
+				firstName: user.student?.firstName!,
+				middleName: user.student?.middleName!,
+				lastName: user.student?.lastName!,
+				dateOfBirth: user.student?.dateOfBirth!,
+				phoneNumber: user.student?.phoneNumber!,
+			};
+		}
+
+		return {
+			id: user?.id!,
+			email: user?.email!,
+			branch: user?.branch!,
+			userType: user?.userType!,
+			token: token,
+			student: student,
+			createdAt: user?.createdAt,
+			updatedAt: user?.createdAt,
+		};
 	},
 };

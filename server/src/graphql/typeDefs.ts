@@ -160,6 +160,7 @@ const typeDefs = gql`
 		aboutCompany: String
 		feedback: String
 		jobs: [Job]
+
 		createdAt: DateTime
 		updatedAt: DateTime
 	}
@@ -366,6 +367,35 @@ const typeDefs = gql`
 		studentIDs: [String!]!
 	}
 
+	input LoginInput {
+		email: String!
+		password: String!
+	}
+
+	type StudentReturn {
+		regNo: String!
+		firstName: String!
+		middleName: String
+		lastName: String!
+		dateOfBirth: DateTime!
+		phoneNumber: String!
+
+		createdAt: DateTime
+		updatedAt: DateTime
+	}
+
+	type UserReturn {
+		id: String!
+		email: String!
+		userType: UserType!
+		branch: Branch!
+		token: String!
+		student: StudentReturn
+
+		createdAt: String!
+		updatedAt: String!
+	}
+
 	type Mutation {
 		createNewJob(createNewJobInput: CreateNewJobInput!): Job!
 		createUser(createUserInput: CreateUserInput!): User!
@@ -373,6 +403,7 @@ const typeDefs = gql`
 		updateJob(updateJobInput: UpdateJobInput!): Job!
 		addStudentToJob(studentID: String!, jobID: String!): String!
 		addShortlist(addShortlistInput: AddShortlistInput!): String!
+		loginUser(loginInput: LoginInput!): UserReturn!
 
 		deleteJob(jobID: String!): Job!
 	}

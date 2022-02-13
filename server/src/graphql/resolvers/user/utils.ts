@@ -1,5 +1,7 @@
-import { CreateUserInput } from "../../../types/graphql";
+import { CreateUserInput, LoginInput, UserType } from "../../../types/graphql";
 import { PrismaClient } from "@prisma/client";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();
 
@@ -254,3 +256,63 @@ export const validateCreateUserInput = async ({
 		isValid: Object.values(errors).every(value => value === null),
 	};
 };
+
+type LoginError = {
+	email: string | null;
+	password: string | null;
+};
+
+export const validateLoginInput = async ({ email, password }: LoginInput) => {
+	const errors: LoginError = {
+		email: null,
+		password: null,
+	};
+
+	const isEmail: RegExp = /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/;
+
+	if (email.trim() === "") {
+		errors.email = "Email must not be empty";
+	} else if (!email.match(isEmail)) {
+		errors.email = "Email must be valid email";
+	} else if (password.trim() === "") {
+		errors.password = "Password must not be empty";
+	} else {
+		const user = await prisma.user.findUnique({
+			where: {
+				email: email,
+			},
+		});
+
+		if (!user) {
+			errors.email = "Email ID not valid";
+		} else {
+			const match = await bcrypt.compare(password, user?.password!);
+			if (!match) errors.password = "Wrong password";
+		}
+	}
+
+	return {
+		errors: errors,
+		isValid: Object.values(errors).every(value => value === null),
+	};
+};
+
+export type PayloadData = {
+	id: string;
+	email: string;
+	userType: UserType;
+};
+
+export function generateToken(payload: PayloadData) {
+	return jwt.sign(
+		{
+			id: payload.id,
+			email: payload.email,
+			userType: payload.userType,
+		},
+		process.env.SECRET_KEY!,
+		{
+			expiresIn: "2h",
+		}
+	);
+}
