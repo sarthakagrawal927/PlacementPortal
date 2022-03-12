@@ -1,0 +1,20 @@
+query GetAllJobs {
+	getAllJobs {
+		id
+		company {
+			name
+			logo
+			id
+		}
+		profile
+		category
+		locations
+		ctc
+		stipend
+		registrationStartDate
+		registrationDeadline
+		offerType
+		isSpot
+		numberOfregistrations
+	}
+}

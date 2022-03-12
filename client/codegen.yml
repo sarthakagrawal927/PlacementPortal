@@ -2,8 +2,8 @@ overwrite: true
 schema: ${NEXT_PUBLIC_GRAPHQL_API}
 documents: "graphql/**/*.graphql*"
 generates:
-    types/types.graphql.ts:
-        plugins:
-            - "typescript"
-            - "typescript-operations"
-            - "typescript-react-apollo"
+  types/types.graphql.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"

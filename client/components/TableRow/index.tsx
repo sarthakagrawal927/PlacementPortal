@@ -2,43 +2,44 @@ import MaterialTableRow, { TableRowProps as MaterialTableRowProps } from "@mui/m
 import TableCell from "./../TableCell";
 import { useTheme } from "@mui/material";
 import Stack from "@mui/material/Stack";
-import { CompanyType } from "../../lib/dashboard/companyType";
+import { JobType } from "../../lib/dashboard/jobType";
 import Typography from "@mui/material/Typography";
 import StatusCell from "./statusCell";
 import CompanyCell from "./companyCell";
 import { styled } from "@mui/material";
 interface TableRowProps extends MaterialTableRowProps {
 	index: number;
-	company: CompanyType;
+	job: JobType;
 }
 
 const SmallerTypography = styled(Typography)({
 	fontSize: "0.75rem",
 });
-const TableRow = ({ index, company }: TableRowProps) => {
+
+const TableRow = ({ index, job }: TableRowProps) => {
 	const theme = useTheme();
-	const locations = company.location.join(", ");
+	const locations = job?.locations?.join(", ");
 	return (
 		<MaterialTableRow
 			sx={{
 				backgroundColor: index % 2 === 1 ? theme.uiColor.lightestGray : "",
 				borderBottom: "none",
 			}}
-			key={company.stipend + index}
+			key={job?.stipend + index}
 		>
-			<CompanyCell name={company.name} logo={company.logo} registrations={company.registrations} />
+			<CompanyCell name={job?.company.name} logo={job?.company.logo} registrations={job?.numberOfregistrations} />
 
-			{company.ctc ? <TableCell>{company.ctc}LPA</TableCell> : "-"}
-			{company.stipend ? <TableCell>{company.stipend}K/month</TableCell> : "-"}
+			<TableCell> {job?.ctc ? `${job?.ctc / 100000} LPA` : "-"}</TableCell>
+			<TableCell>{job?.stipend ? `${job?.stipend}K/month` : "-"}</TableCell>
 
 			<TableCell>
-				<SmallerTypography>{company.profile}</SmallerTypography>
+				<SmallerTypography>{job?.profile}</SmallerTypography>
 			</TableCell>
 
 			<TableCell>
 				<Stack direction="column">
-					<Typography> {company.offer}</Typography>
-					<SmallerTypography> {company.isSpot && "(SPOT)"}</SmallerTypography>
+					<Typography> {job?.offerType}</Typography>
+					<SmallerTypography> {job?.isSpot && "(SPOT)"}</SmallerTypography>
 				</Stack>
 			</TableCell>
 
@@ -48,9 +49,9 @@ const TableRow = ({ index, company }: TableRowProps) => {
 				</Stack>
 			</TableCell>
 
-			<TableCell>{company.category}</TableCell>
+			<TableCell>{job?.category}</TableCell>
 
-			<StatusCell status={company.status} dates={company.dates} />
+			<StatusCell registrationStartDate={job?.registrationStartDate} registrationDeadline={job?.registrationDeadline} />
 		</MaterialTableRow>
 	);
 };
